@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:sharekhan/indoor.dart';
 import 'package:sharekhan/outdoor.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -36,17 +35,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int selectedIndex = 0;
-  List <Widget> pages =  <Widget> [
-    Indoor(),
-    Outdoor()
-  ];
+  List<Widget> pages = <Widget>[Indoor(), Outdoor()];
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: pages[selectedIndex],
-        bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>
-        [
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Indoor',
@@ -64,10 +59,10 @@ class _MyHomePageState extends State<MyHomePage> {
         unselectedFontSize: 20,
         onTap: (value) {
           setState(() {
-          selectedIndex = value;
+            selectedIndex = value;
           });
         },
       ),
-        );
+    );
   }
 }
