@@ -1,6 +1,7 @@
 import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
+import 'package:vibration/vibration.dart';
 
 class RequirementStateController extends GetxController {
   var bluetoothState = BluetoothState.stateOff.obs;
@@ -53,15 +54,29 @@ class RequirementStateController extends GetxController {
     return _startBroadcasting.stream;
   }
 
-  void tellNearestBeacon(String n , String d , String id) async{
+  void tellNearestBeacon(String n, String d, String id) async {
     nearestDesc = d;
     nearestName = n;
     nearestUUID = id;
     FlutterTts flutterTts = FlutterTts();
     print("sas");
-    await flutterTts.speak(nearestName??"");
-    await flutterTts.speak(nearestDesc??"");
+    await flutterTts.speak(nearestName ?? "");
+    await flutterTts.speak(nearestDesc ?? "");
+    pauseScanning();
     Get.back();
+  }
+
+  void tellcheckpoints(String d) async {
+    FlutterTts flutterTts = FlutterTts();
+    bool? checkvibe = await Vibration.hasVibrator();
+    if (checkvibe == null) {
+      print('thats why its failing');
+    }
+    if (checkvibe != null) {
+      print('its working');
+      Vibration.vibrate();
+    }
+    await flutterTts.speak(d);
   }
 
   Stream<bool> get startStream {

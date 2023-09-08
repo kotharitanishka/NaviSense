@@ -122,6 +122,8 @@ class _TabScannerState extends State<TabScanner> {
   @override
   void dispose() {
     _streamRanging?.cancel();
+    pauseScanBeacon();
+    flutterBeacon.close;
     super.dispose();
   }
 

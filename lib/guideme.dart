@@ -5,14 +5,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:get/get.dart';
 import 'package:sharekhan/scanner_find.dart';
+import 'package:sharekhan/scanner_guide.dart';
 import 'controller/beacon_controller.dart';
 
-class FindMe extends StatefulWidget {
+class GuideMe extends StatefulWidget {
   @override
-  _FindMeState createState() => _FindMeState();
+  _GuideMeState createState() => _GuideMeState();
 }
 
-class _FindMeState extends State<FindMe> with WidgetsBindingObserver {
+class _GuideMeState extends State<GuideMe> with WidgetsBindingObserver {
   final controller = Get.find<RequirementStateController>();
   StreamSubscription<BluetoothState>? _streamBluetooth;
   int currentIndex = 0;
@@ -173,7 +174,7 @@ class _FindMeState extends State<FindMe> with WidgetsBindingObserver {
           }),
         ],
       ),
-      body: TabScanner()
+      body: GuideScanner()
      
     );
   }

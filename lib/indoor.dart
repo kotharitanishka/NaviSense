@@ -4,6 +4,9 @@ import 'package:get/get.dart';
 import 'package:sharekhan/controller/beacon_controller.dart';
 import 'package:sharekhan/findme.dart';
 
+import 'guideme.dart';
+import 'scanner_guide.dart';
+
 class Indoor extends StatefulWidget {
   const Indoor({super.key});
 
@@ -47,9 +50,8 @@ class _IndoorState extends State<Indoor> {
           ),
           InkWell(
             onTap: () async{
-              FlutterTts flutterTts = FlutterTts();
-              await flutterTts.speak("guide me is working");
-              print("guide me is working");
+              controller.startScanning();
+              Get.to(GuideMe() , arguments: ['CB10023F-A318-3394-4199-A8730C7C1AEC']);
             },
             child: Card(
               child: SizedBox(

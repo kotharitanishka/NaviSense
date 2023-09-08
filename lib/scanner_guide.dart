@@ -2,20 +2,22 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:get/get.dart';
+import 'package:vibration/vibration.dart';
 import 'controller/beacon_controller.dart';
 
-class TabScanner extends StatefulWidget {
-  const TabScanner({super.key});
+class GuideScanner extends StatefulWidget {
+  const GuideScanner({super.key});
 
   @override
-  State<TabScanner> createState() => _TabScannerState();
+  State<GuideScanner> createState() => _GuideScannerState();
 }
 
-class _TabScannerState extends State<TabScanner> {
+class _GuideScannerState extends State<GuideScanner> {
   StreamSubscription<RangingResult>? _streamRanging;
   final _regionBeacons = <Region, List<Beacon>>{};
   final _beacons = <Beacon>[];
   final controller = Get.find<RequirementStateController>();
+  List<String> path = Get.arguments;
 
   @override
   void initState() {
@@ -36,13 +38,6 @@ class _TabScannerState extends State<TabScanner> {
   }
 
   initScanBeacon() async {
-    Map<String, dynamic> m = {
-      "CB10023F-A318-3394-4199-A8730C7C1AEC": {
-        "name": "Cafe",
-        "desc": "You are at"
-      }
-    };
-
     await flutterBeacon.initializeScanning;
     if (!controller.authorizationStatusOk ||
         !controller.locationServiceEnabled ||
@@ -79,17 +74,28 @@ class _TabScannerState extends State<TabScanner> {
         flutterBeacon.ranging(regions).listen((RangingResult result) {
       print(result);
       if (mounted) {
+        print("hello");
         setState(() {
           _regionBeacons[result.region] = result.beacons;
           _beacons.clear();
           _regionBeacons.values.forEach((list) {
             _beacons.addAll(list);
           });
-          _beacons.sort((a, b) => a.accuracy.compareTo(b.accuracy));
-          if (_beacons.isNotEmpty) {
-            Beacon nearest = _beacons[0];
-            controller.tellNearestBeacon(m[nearest.proximityUUID]['name'],
-                m[nearest.proximityUUID]['desc'] + "${nearest.accuracy} meters from " + m[nearest.proximityUUID]['name'], nearest.proximityUUID);
+          if (path.isNotEmpty) {
+            Beacon? b = _beacons.firstWhereOrNull(
+                (element) => path[0] == element.proximityUUID);
+            if (b != null) {
+              if (b.accuracy <= 0.5) {
+                controller.tellcheckpoints('reached checkpoint');
+                path.remove(b.proximityUUID);
+                if (path.isEmpty) {
+                  Get.back();
+                }
+              }
+              print("hello");
+            }
+          } else {
+            Get.back();
           }
         });
       }
@@ -99,9 +105,11 @@ class _TabScannerState extends State<TabScanner> {
   pauseScanBeacon() async {
     _streamRanging?.pause();
     if (_beacons.isNotEmpty) {
-      setState(() {
-        _beacons.clear();
-      });
+      if (mounted) {
+        setState(() {
+          _beacons.clear();
+        });
+      }
     }
   }
 
@@ -122,6 +130,8 @@ class _TabScannerState extends State<TabScanner> {
   @override
   void dispose() {
     _streamRanging?.cancel();
+    pauseScanBeacon();
+    flutterBeacon.close;
     super.dispose();
   }
 
