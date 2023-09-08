@@ -55,11 +55,11 @@ class _GuideScannerState extends State<GuideScanner> {
       ),
       Region(
         identifier: 'com.example.myDeviceRegion',
-        proximityUUID: '39ED98FF-2900-441A-802F-9C398FC199D2',
+        proximityUUID:'CB10023F-A318-3394-4199-A8730C7C1ABC',
       ),
       Region(
         identifier: 'BeaconType2',
-        proximityUUID: '6a84c716-0f2a-1ce9-f210-6a63bd873dd9',
+        proximityUUID: 'CB10023F-A318-3394-4199-A8730C7C1ADC',
       ),
     ];
 
@@ -72,9 +72,9 @@ class _GuideScannerState extends State<GuideScanner> {
 
     _streamRanging =
         flutterBeacon.ranging(regions).listen((RangingResult result) {
-      print(result);
+      //print(result);
       if (mounted) {
-        print("hello");
+      //  print("hello");
         setState(() {
           _regionBeacons[result.region] = result.beacons;
           _beacons.clear();
@@ -88,11 +88,12 @@ class _GuideScannerState extends State<GuideScanner> {
               if (b.accuracy <= 0.5) {
                 controller.tellcheckpoints('reached checkpoint');
                 path.remove(b.proximityUUID);
+                print(path);
                 if (path.isEmpty) {
                   Get.back();
                 }
               }
-              print("hello");
+              //print("hello");
             }
           } else {
             Get.back();

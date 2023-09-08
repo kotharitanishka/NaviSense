@@ -3,6 +3,7 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 import 'package:sharekhan/controller/beacon_controller.dart';
 import 'package:sharekhan/findme.dart';
+import 'package:sharekhan/routes.dart';
 
 import 'guideme.dart';
 import 'scanner_guide.dart';
@@ -38,10 +39,16 @@ class _IndoorState extends State<Indoor> {
               child: SizedBox(
                 width: double.infinity,
                 height: 250,
-                child: Center(
-                    child: Text('Find Me',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 40))),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.pin_drop_outlined, size: 60),
+                    Center(
+                        child: Text('Locate Me',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 40, ))),
+                  ],
+                ),
               ),
             ),
           ),
@@ -50,17 +57,24 @@ class _IndoorState extends State<Indoor> {
           ),
           InkWell(
             onTap: () async{
+              // Get.to(Routes());
               controller.startScanning();
-              Get.to(GuideMe() , arguments: ['CB10023F-A318-3394-4199-A8730C7C1AEC']);
+              Get.to(GuideMe() , arguments: ['CB10023F-A318-3394-4199-A8730C7C1ABC','CB10023F-A318-3394-4199-A8730C7C1AEC','CB10023F-A318-3394-4199-A8730C7C1ADC']);
             },
             child: Card(
               child: SizedBox(
                 width: double.infinity,
                 height: 250,
-                child: Center(
-                    child: Text('Guide Me ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 40))),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.map_outlined , size: 60),
+                    Center(
+                        child: Text('Guide Me ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 40 ))),
+                  ],
+                ),
               ),
             ),
           ),

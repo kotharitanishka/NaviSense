@@ -40,6 +40,14 @@ class _TabScannerState extends State<TabScanner> {
       "CB10023F-A318-3394-4199-A8730C7C1AEC": {
         "name": "Cafe",
         "desc": "You are at"
+      },
+        "CB10023F-A318-3394-4199-A8730C7C1ABC": {
+        "name": "Sanya",
+        "desc": "You are at"
+      },
+        "CB10023F-A318-3394-4199-A8730C7C1ADC": {
+        "name": "Aayushi",
+        "desc": "You are at"
       }
     };
 
@@ -60,11 +68,11 @@ class _TabScannerState extends State<TabScanner> {
       ),
       Region(
         identifier: 'com.example.myDeviceRegion',
-        proximityUUID: '39ED98FF-2900-441A-802F-9C398FC199D2',
+        proximityUUID: 'CB10023F-A318-3394-4199-A8730C7C1ABC'
       ),
       Region(
         identifier: 'BeaconType2',
-        proximityUUID: '6a84c716-0f2a-1ce9-f210-6a63bd873dd9',
+        proximityUUID: 'CB10023F-A318-3394-4199-A8730C7C1ADC',
       ),
     ];
 
