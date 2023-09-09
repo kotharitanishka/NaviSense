@@ -6,6 +6,27 @@ import 'package:sharekhan/findme.dart';
 import 'package:sharekhan/routes.dart';
 import 'guideme.dart';
 import 'scanner_guide.dart';
+import 'package:http/http.dart' as http;
+
+Future<void> fetchData() async {
+  final url = Uri.parse(
+      'http://16.171.114.220:8000/getNearestHelper?currRoom=CB10023F-A318-3394-4199-A8730C7C1AAA'); // Replace with your API endpoint
+
+  try {
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      // Successful response, parse the data here
+      print('Response data: ${response.body}');
+    } else {
+      // Handle errors here, e.g., network issues or non-200 status codes
+      print('Request failed with status: ${response.statusCode}');
+    }
+  } catch (e) {
+    // Handle any exceptions that may occur during the request
+    print('Error: $e');
+  }
+}
 
 class Indoor extends StatefulWidget {
   const Indoor({super.key});
