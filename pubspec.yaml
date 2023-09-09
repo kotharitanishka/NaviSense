@@ -41,6 +41,7 @@ dependencies:
   vibration: ^1.8.1
   google_fonts: ^5.1.0
   maps_launcher: ^2.2.0
+  speech_to_text: ^6.3.0
 
 dev_dependencies:
   flutter_test:
