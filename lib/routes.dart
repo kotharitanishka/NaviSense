@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'controller/beacon_controller.dart';
 import 'findme.dart';
 import 'guideme.dart';
 
@@ -11,18 +12,17 @@ class Routes extends StatefulWidget {
   State<Routes> createState() => _RoutesState();
 }
 
-List<String> list = <String>['One', 'Two', 'Three', 'Four'];
-
 class _RoutesState extends State<Routes> {
+  
+
+  final RequirementStateController controller = Get.find();
   @override
-  initState() {
+  void initState() {
+    // TODO: implement initState
     super.initState();
-    print("initState Called");
-    // controller.startScanning();
-    // Get.to(FindMe());
+    print(controller.beaconData[controller.nearestUUID??"CB10023F-A318-3394-4199-A8730C7C1AEC"]);
   }
   
-  String dropdownValue = list.first;
   @override
   Widget build(BuildContext context) {
         return Scaffold(
@@ -35,157 +35,88 @@ class _RoutesState extends State<Routes> {
       ),
             body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-        child: Column(children: [
-          InkWell(
-            // onTap: () async{
-            //   controller.startScanning();
-            //   Get.to(FindMe());
-            // },
-            child: Card(
-              color: Colors.blueAccent,
-              child: SizedBox(
-                width: double.infinity,
-                height: 150,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    //Icon(Icons.pin_drop_outlined, size: 60),
-                    Center(
-                        child: Column(
-                          children: [
-                            Text('Source',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 40, )),
-                            Text('Room1',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 40, )),
-                          ],
-                        )),
-                  ],
+        child: SingleChildScrollView(
+          child: Column(children: [
+            InkWell(
+              // onTap: () async{
+              //   controller.startScanning();
+              //   Get.to(FindMe());
+              // },
+              child: Card(
+                color: Colors.blueAccent,
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 150,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      //Icon(Icons.pin_drop_outlined, size: 60),
+                      Center(
+                          child: Column(
+                            children: [
+                              Text('Source',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 40, )),
+                              Text(controller.nearestName??'Cafe',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 40, color: Colors.white)),
+                            ],
+                          )),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          InkWell(
-            // onTap: () async{
-            //   Get.to(Routes());
-            //   // controller.startScanning();
-            //   // Get.to(GuideMe() , arguments: ['CB10023F-A318-3394-4199-A8730C7C1ABC','CB10023F-A318-3394-4199-A8730C7C1AEC','CB10023F-A318-3394-4199-A8730C7C1ADC']);
-            // },
-            child: Card(
-              color: Colors.deepPurpleAccent,
-              child: SizedBox(
-                width: double.infinity,
-                height: 150,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    //Icon(Icons.map_outlined , size: 60),
-                    Center(
-                        child: Column(
-                          children: [
-                            Text('Destination ',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 40 )),
-                                    Text('Room2',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 40 )),
-                          ],
-                        )),
-                  ],
-                ),
+            SizedBox(
+              height: 20,
+            ),
+        
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Where to ?' , 
+              textAlign: TextAlign.left,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
               ),
             ),
-          ),
-          SizedBox(
-            height: 20),
-                    InkWell(
-            onTap: () async{
-              //Get.to(Routes());
-              var controller;
+        
+            SizedBox(
+              height: 20),
+        
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: (controller.beaconData[controller.nearestUUID??"CB10023F-A318-3394-4199-A8730C7C1AEC"]!['paths']! as List).length,
+              itemBuilder: (context, index) {
+                List<String> paths = controller.beaconData[controller.nearestUUID??"CB10023F-A318-3394-4199-A8730C7C1AEC"]!['paths']! as List <String>;
+        
+              return InkWell(
+              onTap: () async{
               controller.startScanning();
-              Get.to(GuideMe() , arguments: ['CB10023F-A318-3394-4199-A8730C7C1ABC','CB10023F-A318-3394-4199-A8730C7C1AEC','CB10023F-A318-3394-4199-A8730C7C1ADC']);
+              Get.off(GuideMe() , arguments: controller.beaconData[controller.nearestUUID??"CB10023F-A318-3394-4199-A8730C7C1AEC"]![paths[index]] as List<String>);
             },
-            child: Card(
-              color: Colors.redAccent,
-              child: SizedBox(
-                width: double.infinity,
-                height: 150,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    //Icon(Icons.map_outlined , size: 60),
-                    Center(
-                        child: Column(
-                          children: [
-                            Text('Take Me',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 40 )),
-                                    
-                          ],
-                        )),
-                  ],
+              child: Card(
+                color: Colors.deepPurpleAccent,
+                child: SizedBox(
+                  width: double.infinity,
+                  //height: 120,
+                  child: Center(
+                      child: Text(paths[index],
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 40, ))),
                 ),
               ),
-            ),
-          ),
-        ]),
+            );
+        
+            },),
+        
+              SizedBox(
+              height: 20),
+        
+              
+          ]),
+        ),
       ),
-      // body: Padding(
-      //   padding: const EdgeInsets.only(left: 20, right: 20, top: 0),
-      //   child: Column(
-      //     //mainAxisAlignment: MainAxisAlignment.center,
-      //     children: [
-      //       Text('Source', 
-      //       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40)),
-
-      //       SizedBox(height : 20),
-
-      //       Text('Room1', 
-      //       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40)),
-
-      //       SizedBox(height : 40),
-
-      //       Text('Destination', 
-      //       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40)),
-
-      //       SizedBox(height : 20),
-
-
-      //       SizedBox(
-      //         width: 200,
-      //         child: DropdownButton<String>(
-      //             value: dropdownValue,
-      //             icon: const Icon(Icons.arrow_downward),
-      //             elevation: 30,
-      //             style: const TextStyle(color: Colors.deepPurple),
-      //             underline: Container(
-      //               height: 2,
-      //               color: Colors.deepPurpleAccent,
-      //             ),
-      //             onChanged: (String? value) {
-      //               // This is called when the user selects an item.
-      //               setState(() {
-      //                 dropdownValue = value!;
-      //               });
-      //             },
-      //             items: list.map<DropdownMenuItem<String>>((String value) {
-      //               return DropdownMenuItem<String>(
-      //                 value: value,
-      //                 child: Text(value),
-      //               );
-      //             }).toList(),
-      //           ),
-      //       ),
-
-      //       SizedBox(height : 20),
-
-      //     ],
-      //   ),
-      // ),
+      
     );
   }
 }

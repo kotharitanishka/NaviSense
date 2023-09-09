@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sharekhan/controller/beacon_controller.dart';
 import 'package:sharekhan/findme.dart';
 import 'package:sharekhan/routes.dart';
+import 'package:sharekhan/speechtotext.dart';
 import 'guideme.dart';
 import 'scanner_guide.dart';
 import 'package:http/http.dart' as http;
@@ -46,6 +47,9 @@ class _IndoorState extends State<Indoor> {
           child: Text('Indoor',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40)),
         ),
+        actions: [IconButton(onPressed :() {
+          Get.to(SpeechToText());
+        }, icon: Icon(Icons.mic))],
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
