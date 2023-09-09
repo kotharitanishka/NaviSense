@@ -38,15 +38,15 @@ class _TabScannerState extends State<TabScanner> {
   initScanBeacon() async {
     Map<String, dynamic> m = {
       "CB10023F-A318-3394-4199-A8730C7C1AEC": {
-        "name": "Cafe",
+        "name": "Cabin",
         "desc": "You are at"
       },
         "CB10023F-A318-3394-4199-A8730C7C1ABC": {
-        "name": "Sanya",
+        "name": "Conference room",
         "desc": "You are at"
       },
         "CB10023F-A318-3394-4199-A8730C7C1ADC": {
-        "name": "Aayushi",
+        "name": "Cafeteria",
         "desc": "You are at"
       }
     };

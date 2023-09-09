@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:sharekhan/controller/beacon_controller.dart';
 import 'package:sharekhan/findme.dart';
 import 'package:sharekhan/routes.dart';
-
 import 'guideme.dart';
 import 'scanner_guide.dart';
 
@@ -36,9 +35,10 @@ class _IndoorState extends State<Indoor> {
               Get.to(FindMe());
             },
             child: Card(
+              color: Colors.blueAccent,
               child: SizedBox(
                 width: double.infinity,
-                height: 250,
+                height: 170,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -53,24 +53,52 @@ class _IndoorState extends State<Indoor> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           InkWell(
             onTap: () async{
-              // Get.to(Routes());
-              controller.startScanning();
-              Get.to(GuideMe() , arguments: ['CB10023F-A318-3394-4199-A8730C7C1ABC','CB10023F-A318-3394-4199-A8730C7C1AEC','CB10023F-A318-3394-4199-A8730C7C1ADC']);
+              Get.to(Routes());
+              // controller.startScanning();
+              // Get.to(GuideMe() , arguments: ['CB10023F-A318-3394-4199-A8730C7C1ABC','CB10023F-A318-3394-4199-A8730C7C1AEC','CB10023F-A318-3394-4199-A8730C7C1ADC']);
             },
             child: Card(
+              color: Colors.deepPurpleAccent,
               child: SizedBox(
                 width: double.infinity,
-                height: 250,
+                height: 170,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(Icons.map_outlined , size: 60),
                     Center(
                         child: Text('Guide Me ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 40 ))),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+                    InkWell(
+            onTap: () async{
+              // Get.to(Routes());
+              // controller.startScanning();
+              // Get.to(GuideMe() , arguments: ['CB10023F-A318-3394-4199-A8730C7C1ABC','CB10023F-A318-3394-4199-A8730C7C1AEC','CB10023F-A318-3394-4199-A8730C7C1ADC']);
+            },
+            child: Card(
+              color: Colors.redAccent,
+              child: SizedBox(
+                width: double.infinity,
+                height: 170,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.map_outlined , size: 60),
+                    Center(
+                        child: Text('Help Me ',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 40 ))),
                   ],

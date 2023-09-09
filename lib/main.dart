@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         currentIndex: selectedIndex,
-        selectedItemColor: Colors.red,
+        selectedItemColor: Colors.black,
         selectedFontSize: 20,
         iconSize: 30,
         unselectedItemColor: Colors.blue,
