@@ -30,7 +30,7 @@ class _IndoorState extends State<Indoor> {
         padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
         child: Column(children: [
           InkWell(
-            onTap: () async{
+            onTap: () async {
               controller.startScanning();
               Get.to(FindMe());
             },
@@ -46,7 +46,9 @@ class _IndoorState extends State<Indoor> {
                     Center(
                         child: Text('Locate Me',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 40, ))),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 40,
+                            ))),
                   ],
                 ),
               ),
@@ -69,11 +71,11 @@ class _IndoorState extends State<Indoor> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.map_outlined , size: 60),
+                    Icon(Icons.map_outlined, size: 60),
                     Center(
                         child: Text('Guide Me ',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 40 ))),
+                                fontWeight: FontWeight.bold, fontSize: 40))),
                   ],
                 ),
               ),

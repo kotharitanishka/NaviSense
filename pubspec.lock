@@ -40,7 +40,11 @@ packages:
       sha256: "4a07be6cb69c84d677a6c3096fcf960cc3285a8330b4603e0d463d15d9bd934c"
       url: "https://pub.dev"
     source: hosted
+<<<<<<< HEAD
     version: "1.17.1"
+=======
+    version: "1.17.2"
+>>>>>>> ad1b9413fabf9530f31c87f44a16fc590c8072e0
   crypto:
     dependency: transitive
     description:
@@ -143,7 +147,11 @@ packages:
       sha256: "2ba20a47c8f1f233bed775ba2dd0d3ac97b4cf32fc17731b3dfc672b06b0e92a"
       url: "https://pub.dev"
     source: hosted
+<<<<<<< HEAD
     version: "4.6.5"
+=======
+    version: "4.6.6"
+>>>>>>> ad1b9413fabf9530f31c87f44a16fc590c8072e0
   google_fonts:
     dependency: "direct main"
     description:
@@ -168,6 +176,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+<<<<<<< HEAD
   js:
     dependency: transitive
     description:
@@ -176,6 +185,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.7"
+=======
+>>>>>>> ad1b9413fabf9530f31c87f44a16fc590c8072e0
   lints:
     dependency: transitive
     description:
@@ -340,7 +351,11 @@ packages:
       sha256: eb6ac1540b26de412b3403a163d919ba86f6a973fe6cc50ae3541b80092fdcfb
       url: "https://pub.dev"
     source: hosted
+<<<<<<< HEAD
     version: "0.5.1"
+=======
+    version: "0.6.0"
+>>>>>>> ad1b9413fabf9530f31c87f44a16fc590c8072e0
   typed_data:
     dependency: transitive
     description:
