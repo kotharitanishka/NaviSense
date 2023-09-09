@@ -58,7 +58,7 @@ class _IndoorState extends State<Indoor> {
             height: 10,
           ),
           InkWell(
-            onTap: () async{
+            onTap: () async {
               Get.to(Routes());
               // controller.startScanning();
               // Get.to(GuideMe() , arguments: ['CB10023F-A318-3394-4199-A8730C7C1ABC','CB10023F-A318-3394-4199-A8730C7C1AEC','CB10023F-A318-3394-4199-A8730C7C1ADC']);
@@ -84,8 +84,26 @@ class _IndoorState extends State<Indoor> {
           SizedBox(
             height: 10,
           ),
-                    InkWell(
-            onTap: () async{
+          InkWell(
+            onTap: () async {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: const Text('Help is Reaching'),
+                      content: const Text(
+                          'We are sending help your way. Please stay calm.'),
+                      actions: <Widget>[
+                        TextButton(
+                          child: const Text('OK'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    );
+                  });
+
               // Get.to(Routes());
               // controller.startScanning();
               // Get.to(GuideMe() , arguments: ['CB10023F-A318-3394-4199-A8730C7C1ABC','CB10023F-A318-3394-4199-A8730C7C1AEC','CB10023F-A318-3394-4199-A8730C7C1ADC']);
@@ -98,11 +116,11 @@ class _IndoorState extends State<Indoor> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.map_outlined , size: 60),
+                    Icon(Icons.map_outlined, size: 60),
                     Center(
                         child: Text('Help Me ',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 40 ))),
+                                fontWeight: FontWeight.bold, fontSize: 40))),
                   ],
                 ),
               ),
