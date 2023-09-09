@@ -17,7 +17,9 @@ class _GuideScannerState extends State<GuideScanner> {
   final _regionBeacons = <Region, List<Beacon>>{};
   final _beacons = <Beacon>[];
   final controller = Get.find<RequirementStateController>();
-  List<String> path = Get.arguments;
+  List<String> path = Get.arguments['id'];
+  List<String> dir = Get.arguments['dir'];
+  int ix = 0;
 
   @override
   void initState() {
@@ -86,7 +88,8 @@ class _GuideScannerState extends State<GuideScanner> {
                 (element) => path[0] == element.proximityUUID);
             if (b != null) {
               if (b.accuracy <= 0.5) {
-                controller.tellcheckpoints('reached checkpoint');
+                controller.tellcheckpoints(dir[ix]);
+                ix +=1;
                 path.remove(b.proximityUUID);
                 print(path);
                 if (path.isEmpty) {

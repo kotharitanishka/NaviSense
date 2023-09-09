@@ -14,9 +14,18 @@ class RequirementStateController extends GetxController {
         "CB10023F-A318-3394-4199-A8730C7C1ADC",
         "CB10023F-A318-3394-4199-A8730C7C1ABC"
       ],
+      "Cabin-dir": [
+        "YOU are at Cafe, Go straight",
+        "You have reached conference room , go right, and continue straight",
+        "You have reached the cabin. thank you"
+      ],
       "Conference Room": [
         "CB10023F-A318-3394-4199-A8730C7C1AEC",
         "CB10023F-A318-3394-4199-A8730C7C1ADC"
+      ],
+      "Conference Room-dir": [
+        "YOU are at Cafe, Go straight",
+        "You have reached the conference room. thank you"
       ],
       "help": true
     },
@@ -27,12 +36,23 @@ class RequirementStateController extends GetxController {
         "CB10023F-A318-3394-4199-A8730C7C1ABC",
         "CB10023F-A318-3394-4199-A8730C7C1AEC"
       ],
+      "Cafe-dir": [
+        "YOU are at Cabin, Go straight",
+        "You have reached the cafe. thank you"
+      ],
       "desc": "You are at",
       "help": false
     },
     "CB10023F-A318-3394-4199-A8730C7C1ADC": {
       "name": "Conference Room",
-      "paths": [],
+      "paths": ["Cabin"],
+      "Cabin" :[ "CB10023F-A318-3394-4199-A8730C7C1ADC",
+      "CB10023F-A318-3394-4199-A8730C7C1ABC"
+      ],
+      "Cabin-dir": [
+        "YOU are at Conference room , Go straight",
+        "You have reached the cabin. thank you"
+      ],
       "desc": "You are at",
       "help": false
     }

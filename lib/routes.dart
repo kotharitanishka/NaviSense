@@ -37,34 +37,22 @@ class _RoutesState extends State<Routes> {
         padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
         child: SingleChildScrollView(
           child: Column(children: [
-            InkWell(
-              // onTap: () async{
-              //   controller.startScanning();
-              //   Get.to(FindMe());
-              // },
-              child: Card(
-                color: Colors.blueAccent,
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 150,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      //Icon(Icons.pin_drop_outlined, size: 60),
-                      Center(
-                          child: Column(
-                            children: [
-                              Text('Source',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 40, )),
-                              Text(controller.nearestName??'Cafe',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 40, color: Colors.white)),
-                            ],
-                          )),
-                    ],
-                  ),
-                ),
+            Card(
+              color: Colors.blueAccent,
+              child: SizedBox(
+                width: double.infinity,
+                child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Source',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 40, )),
+                        Text(controller.nearestName??'Cafe',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 40, color: Colors.white)),
+                      ],
+                    )),
               ),
             ),
             SizedBox(
@@ -92,7 +80,12 @@ class _RoutesState extends State<Routes> {
               return InkWell(
               onTap: () async{
               controller.startScanning();
-              Get.off(GuideMe() , arguments: controller.beaconData[controller.nearestUUID??"CB10023F-A318-3394-4199-A8730C7C1AEC"]![paths[index]] as List<String>);
+              Get.off(GuideMe() , arguments: {
+                'id' : controller.beaconData[controller.nearestUUID??"CB10023F-A318-3394-4199-A8730C7C1AEC"]![paths[index]] as List<String>,
+                'dir' : controller.beaconData[controller.nearestUUID??"CB10023F-A318-3394-4199-A8730C7C1AEC"]!['${paths[index]}-dir'] as List<String>
+                }
+
+              );
             },
               child: Card(
                 color: Colors.deepPurpleAccent,
