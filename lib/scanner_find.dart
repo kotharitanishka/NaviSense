@@ -36,20 +36,7 @@ class _TabScannerState extends State<TabScanner> {
   }
 
   initScanBeacon() async {
-    Map<String, dynamic> m = {
-      "CB10023F-A318-3394-4199-A8730C7C1AEC": {
-        "name": "Cabin",
-        "desc": "You are at"
-      },
-        "CB10023F-A318-3394-4199-A8730C7C1ABC": {
-        "name": "Conference room",
-        "desc": "You are at"
-      },
-        "CB10023F-A318-3394-4199-A8730C7C1ADC": {
-        "name": "Cafeteria",
-        "desc": "You are at"
-      }
-    };
+
 
     await flutterBeacon.initializeScanning;
     if (!controller.authorizationStatusOk ||
@@ -96,8 +83,9 @@ class _TabScannerState extends State<TabScanner> {
           _beacons.sort((a, b) => a.accuracy.compareTo(b.accuracy));
           if (_beacons.isNotEmpty) {
             Beacon nearest = _beacons[0];
-            controller.tellNearestBeacon(m[nearest.proximityUUID]['name'],
-                m[nearest.proximityUUID]['desc'] + "${nearest.accuracy} meters from " + m[nearest.proximityUUID]['name'], nearest.proximityUUID);
+            Map<String, Map<String, Object>> m = controller.beaconData;
+            controller.tellNearestBeacon(m[nearest.proximityUUID]!['name'].toString(),
+                m[nearest.proximityUUID]!['desc'].toString() + "${nearest.accuracy} meters from " + m[nearest.proximityUUID]!['name'].toString(), nearest.proximityUUID);
           }
         });
       }

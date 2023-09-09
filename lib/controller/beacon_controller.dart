@@ -4,6 +4,39 @@ import 'package:get/get.dart';
 import 'package:vibration/vibration.dart';
 
 class RequirementStateController extends GetxController {
+  final beaconData = {
+    "CB10023F-A318-3394-4199-A8730C7C1AEC": {
+      "name": "Cafe",
+      "desc": "You are at",
+      "paths": ["Cabin", "Conference Room"],
+      "Cabin": [
+        "CB10023F-A318-3394-4199-A8730C7C1AEC",
+        "CB10023F-A318-3394-4199-A8730C7C1ADC",
+        "CB10023F-A318-3394-4199-A8730C7C1ABC"
+      ],
+      "Conference Room": [
+        "CB10023F-A318-3394-4199-A8730C7C1AEC",
+        "CB10023F-A318-3394-4199-A8730C7C1ADC"
+      ],
+      "help": true
+    },
+    "CB10023F-A318-3394-4199-A8730C7C1ABC": {
+      "name": "Cabin",
+      "paths": ["Cafe"],
+      "Cafe": [
+        "CB10023F-A318-3394-4199-A8730C7C1ABC",
+        "CB10023F-A318-3394-4199-A8730C7C1AEC"
+      ],
+      "desc": "You are at",
+      "help": false
+    },
+    "CB10023F-A318-3394-4199-A8730C7C1ADC": {
+      "name": "Conference Room",
+      "paths": [],
+      "desc": "You are at",
+      "help": false
+    }
+  };
   var bluetoothState = BluetoothState.stateOff.obs;
   var authorizationStatus = AuthorizationStatus.notDetermined.obs;
   var locationService = false.obs;
