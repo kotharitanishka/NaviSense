@@ -31,7 +31,7 @@ class _IndoorState extends State<Indoor> {
         padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
         child: Column(children: [
           InkWell(
-            onTap: () async{
+            onTap: () async {
               controller.startScanning();
               Get.to(FindMe());
             },
@@ -46,7 +46,9 @@ class _IndoorState extends State<Indoor> {
                     Center(
                         child: Text('Locate Me',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 40, ))),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 40,
+                            ))),
                   ],
                 ),
               ),
@@ -56,10 +58,14 @@ class _IndoorState extends State<Indoor> {
             height: 20,
           ),
           InkWell(
-            onTap: () async{
-              // Get.to(Routes());
-              controller.startScanning();
-              Get.to(GuideMe() , arguments: ['CB10023F-A318-3394-4199-A8730C7C1ABC','CB10023F-A318-3394-4199-A8730C7C1AEC','CB10023F-A318-3394-4199-A8730C7C1ADC']);
+            onTap: () async {
+              Get.to(Routes());
+              // controller.startScanning();
+              // Get.to(GuideMe(), arguments: [
+              //   'CB10023F-A318-3394-4199-A8730C7C1ABC',
+              //   'CB10023F-A318-3394-4199-A8730C7C1AEC',
+              //   'CB10023F-A318-3394-4199-A8730C7C1ADC'
+              // ]);
             },
             child: Card(
               child: SizedBox(
@@ -68,11 +74,11 @@ class _IndoorState extends State<Indoor> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.map_outlined , size: 60),
+                    Icon(Icons.map_outlined, size: 60),
                     Center(
                         child: Text('Guide Me ',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 40 ))),
+                                fontWeight: FontWeight.bold, fontSize: 40))),
                   ],
                 ),
               ),

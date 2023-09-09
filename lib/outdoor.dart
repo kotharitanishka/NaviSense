@@ -13,7 +13,11 @@ class _OutdoorState extends State<Outdoor> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text('Outdoor')),
+        appBar: AppBar(
+          title: const Text(
+            'Outdoor',
+          ),
+        ),
         body: Center(
           child: Column(
             children: <Widget>[
@@ -21,20 +25,19 @@ class _OutdoorState extends State<Outdoor> {
                 onPressed: () => MapsLauncher.launchCoordinates(
                     19.158528171935643,
                     72.99935435913864,
-                    'Railway Station is here'),
+                    'Railway Station with wheel chairs'),
                 child: Card(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: const <Widget>[
                       ListTile(
-                        leading: Icon(Icons.train, size: 80),
+                        leading: Icon(Icons.wheelchair_pickup, size: 72),
                         title: Text('Railway Station',
                             style: TextStyle(
-                                fontSize: 30,
+                                fontSize: 28,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black)),
-                        subtitle:
-                            Text('For train enquiries and ticket booking'),
+                        subtitle: Text('With Wheel Chair'),
                       ),
                     ],
                   ),
@@ -55,7 +58,7 @@ class _OutdoorState extends State<Outdoor> {
                     mainAxisSize: MainAxisSize.min,
                     children: const <Widget>[
                       ListTile(
-                        leading: Icon(Icons.local_police, size: 80),
+                        leading: Icon(Icons.local_police, size: 72),
                         title: Text('Police Station',
                             style: TextStyle(
                                 fontSize: 30,
@@ -87,6 +90,58 @@ class _OutdoorState extends State<Outdoor> {
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black)),
                         subtitle: Text('For medical emergencies and treatment'),
+                      ),
+                    ],
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  color: Colors.white,
+                  margin: EdgeInsets.all(20.0),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () => MapsLauncher.launchCoordinates(
+                    19.16589609074014, 73.00022139611664, 'Restaurant is here'),
+                child: Card(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const <Widget>[
+                      ListTile(
+                        leading: Icon(Icons.sign_language_sharp, size: 40),
+                        title: Text('Restaurants',
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black)),
+                        subtitle: Text('Restaurant with sign language'),
+                      ),
+                    ],
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  color: Colors.white,
+                  margin: EdgeInsets.all(20.0),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () => MapsLauncher.launchCoordinates(
+                    19.174822086258068,
+                    72.9921733090028,
+                    'Current Location is Sharekhan '),
+                child: Card(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const <Widget>[
+                      ListTile(
+                        leading: Icon(Icons.location_city, size: 50),
+                        title: Text('Locate Me',
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black)),
+                        subtitle: Text('Current Location'),
                       ),
                     ],
                   ),
