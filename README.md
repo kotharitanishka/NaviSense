@@ -66,5 +66,5 @@ We welcome contributions from the open-source community! If you'd like to contri
 
 ## License
 
-NaviSense is open-source software licensed under the [MIT License](LICENSE.md). You are free to use, modify, and distribute this software as per the terms of the license.
+NaviSense is open-source software licensed under the [MIT License](https://github.com/kotharitanishka/NaviSense/blob/main/LICENSE). You are free to use, modify, and distribute this software as per the terms of the license.
 
